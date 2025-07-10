@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clothing Shops in Salzburg</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+ <!-- Metadata Panel -->
+<div id="metadataPanel" class="metadata-panel center">
+  <h2>Welcome to the Salzburg Clothing Map!</h2>
+   <p>This interactive map helps you explore clothing stores around Salzburg.  
+  You can filter shops by <strong>type</strong> (e.g. Sport, Casual, Designer) and <strong>category</strong> (men, women, children), or search by name.</p>
+  <p><strong>Data source:</strong> OpenStreetMap (via Overpass Turbo)</p>
+  <p><strong>Author:</strong> Madina Karim</p>
+  <button id="metadataCloseBtn" class="metadata-ok">Let’s go!</button>
+</div>
+
+
+  <!-- Metadata Toggle Button -->
+  <button id="metadataToggleBtn" class="metadata-toggle" title="Map Info">📕</button>
+
+  <!-- Title -->
+  <h1 id="title">Clothing Shops in Salzburg</h1>
+
+  <!-- Legend (filter by clothing type) -->
+  <div id="legend">
+    <div class="legend-item active" data-type="all">
+      <img src="icons/all.png" alt="All" /> All
+    </div>
+    <div class="legend-item" data-type="casual">
+      <img src="icons/casual.png" alt="Casual" /> Casual
+    </div>
+    <div class="legend-item" data-type="sport">
+      <img src="icons/sport.png" alt="Sport" /> Sport
+    </div>
+    <div class="legend-item" data-type="designer">
+      <img src="icons/designer.png" alt="Designer" /> Designer
+    </div>
+    <div class="legend-item" data-type="traditional">
+      <img src="icons/traditional.png" alt="Traditional" /> Traditional
+    </div>
+    <div class="legend-item" data-type="underwear">
+      <img src="icons/underwear.png" alt="Underwear" /> Underwear
+    </div>
+  </div>
+
+  <!-- Category Filter -->
+  <select id="categorySelect">
+    <option value="all">All categories</option>
+    <option value="men">Men</option>
+    <option value="women">Women</option>
+    <option value="children">Children</option>
+  </select>
+
+  <!-- Search Bar -->
+  <div id="searchBar">
+    <input type="text" id="searchInput" placeholder="Search by shop name..." />
+    <button id="searchButton">Search</button>
+  </div>
+
+  <!-- Show My Location Button -->
+  <button id="locate-btn" title="Show my location">📍</button>
+
+  <!-- Map Container -->
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+  <!-- Custom JS -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

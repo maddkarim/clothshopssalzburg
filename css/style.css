@@ -1,0 +1,274 @@
+/* Reset margins and make map fullscreen */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* Map container */
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Title */
+#title {
+  position: absolute;
+  top: 10px; /* Fixed from 'top: px;' */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 40px;
+  font-weight: 900;
+  color: #eb5151;
+  z-index: 1000;
+  background: none;
+  text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+}
+
+/* Legend container */
+#legend {
+  position: absolute;
+  top: 80px;
+  left: 10px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.legend-item:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.legend-item img {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+}
+
+.legend-item.active {
+  background-color: #f16b6b;
+  color: white;
+  font-weight: bold;
+}
+
+/* Category filter (select dropdown) */
+#categorySelect {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  z-index: 1000;
+  font-size: 14px;
+  border: 1px solid #c36464;
+  border-radius: 6px;
+  padding: 6px 10px;
+  background: rgb(231, 139, 139);
+  cursor: pointer;
+}
+
+/* Search panel */
+#searchBar {
+  position: absolute;
+  top: 130px;
+  right: 10px;
+  z-index: 1000;
+  display: flex;
+  gap: 6px;
+}
+
+#searchInput {
+  padding: 6px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #c85656;
+}
+
+#searchButton {
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  background: #ef6e6e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+
+#searchButton:hover {
+  background: #913939;
+}
+
+/* Location button */
+#locate-btn {
+  position: absolute;
+  top: 170px;
+  right: 10px;
+  z-index: 1000;
+  background: rgb(240, 236, 236);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  font-size: 20px; /* Increase emoji size */
+}
+
+/* Zoom control positioning */
+.leaflet-control-zoom {
+  top: 280px !important;
+  right: -6px;
+  z-index: 1000;
+}
+
+/* Scale bar */
+.leaflet-control-scale {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: lab(53.29% 46.36 23.21);
+}
+
+/* Layer control */
+.leaflet-control-layers {
+  margin-top: 30px !important;
+}
+
+.leaflet-control-layers-toggle {
+  width: 34px !important;
+  height: 34px !important;
+  background-color: rgb(228, 191, 191);
+  background-image: url('https://cdn-icons-png.flaticon.com/512/535/535137.png') !important;
+  background-size: 20px 20px !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  border: 1px solid #ccc !important;
+  border-radius: 6px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Smooth marker fade-in animation */
+.fade-in {
+  opacity: 0;
+  animation: fadeInMarker 0.5s ease forwards;
+}
+
+@keyframes fadeInMarker {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Metadata panel */
+.metadata-panel {
+  position: absolute;
+  z-index: 2000;
+  background-color: #f3b0b0;
+  border-radius: 16px;
+  padding: 20px 25px;
+  width: 300px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  font-size: 14px;
+  line-height: 1.6;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Centered view (initial) */
+.metadata-panel.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Floating top-left (after closing) */
+.metadata-panel.left {
+  top: 60px;
+  left: 20px;
+  transform: translateY(0);
+}
+
+/* Hidden panel animation */
+.metadata-panel.hidden {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+/* Heading in panel */
+.metadata-panel h2 {
+  margin-top: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* OK button inside panel */
+.metadata-ok {
+  margin-top: 15px;
+  background-color: hwb(340 7% 91%);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.metadata-ok:hover {
+  background-color: #ce3559;
+}
+
+/* 📕 Metadata toggle button */
+.metadata-toggle {
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  z-index: 1000;
+  background: #ffffff;
+  color: #aa5f5f;
+  border: 3px solid #c72929;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+
+  /* Center emoji/text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+
+.leaflet-marker-icon {
+  transition: opacity 0.3s ease;
+}
