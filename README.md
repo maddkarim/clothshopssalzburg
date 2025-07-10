@@ -14,6 +14,13 @@ Design Choices:
 The icons used to represent clothing types were generated with the help of ChatGPT, but I carefully edited them myself — adjusting colors, scaling, shape and layout so they would look visually consistent on the map. I also made design decisions to keep the interface clean: the legend is placed on the side and works as an interactive filter, not just a static guide. I replaced the default OpenStreetMap background with CartoDB Positron for a more modern look. The search bar is positioned neatly and doesn’t overlap with zoom buttons or the legend. There’s also a button that shows the user’s current location on the map — but only when clicked.
 I also added a smooth animation effect to improve the user experience. When a user clicks on a clothing type (e.g., Sport or Casual) or a category (Men, Women, Children), the relevant shops appear and disappear with a soft fade transition instead of suddenly popping on and off the map. This small animation was implemented using JavaScript and CSS, and it really helps the interaction feel more fluid and polished. The same transition applies to categories and metadata.
 
+Mobile Device Adaptation
+As part of the web map development, a basic mobile-friendly user interface was implemented.
+CSS media queries were used to adjust the layout for screen widths under 600 pixels, ensuring proper display of the title, filter panel, search bar, and current location button.
+Interface elements are responsive and automatically adapt to smaller screens, allowing for convenient interaction with the map on smartphones and tablets.
+Thus, the web map remains functional and readable on both desktop and mobile devices.
+
+
 Analysis:
 One of the hardest parts was implementing the filtering system. Since many shops sell more than one type of clothing (e.g., both casual and sport), I had to write logic that checks for partial matches inside the string values. That required some custom JavaScript work to make sure filters work dynamically and markers are updated correctly.
 
