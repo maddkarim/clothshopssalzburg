@@ -47,6 +47,13 @@ html, body {
   max-width: 90vw;
 }
 
+  #title {
+  white-space: normal;
+  word-wrap: break-word;
+  max-width: 90vw;
+}
+
+
 
 
 
