@@ -18,10 +18,11 @@ html, body {
   z-index: 0;
 }
 
+
 /* Title */
 #title {
   position: absolute;
-  top: 10px; /* Fixed from 'top: px;' */
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   font-size: 40px;
@@ -29,8 +30,12 @@ html, body {
   color: #eb5151;
   z-index: 1000;
   background: none;
-  text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 0.2em 0.5em;
+  font-family: 'Poppins', sans-serif;
 }
+
 
 @media (max-width: 600px) {
   #title {
@@ -40,14 +45,9 @@ html, body {
     max-width: 90%;
     line-height: 1.2;
   }
-
-#title {
-  white-space: normal;
-  word-wrap: break-word;
-  max-width: 90vw;
 }
 
-  #title {
+#title {
   white-space: normal;
   word-wrap: break-word;
   max-width: 90vw;
@@ -297,3 +297,97 @@ html, body {
 .leaflet-marker-icon {
   transition: opacity 0.3s ease;
 }
+
+
+/* Fullscreen responsive map */
+#map {
+  height: 100vh;
+  width: 100%;
+}
+
+/* Top control panel */
+.top-controls {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 10px;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+
+/* Input, select, and search button */
+.top-controls input,
+.top-controls select,
+.top-controls button {
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+}
+
+/* Responsive legend */
+.legend {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 1000;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.legend-item {
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: #eee;
+  font-size: 14px;
+}
+
+/* Zoom button position */
+.leaflet-top.leaflet-left {
+  top: 60px !important; /* Push down zoom buttons on mobile */
+}
+
+/* Locate button style */
+#locate-btn {
+  position: absolute;
+  top: 170px;
+  right: 10px;
+  z-index: 1000;
+  background: white;
+  padding: 8px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  .top-controls {
+    flex-direction: column;
+    align-items: stretch;
+    width: 90%;
+    left: 5%;
+    transform: none;
+  }
+
+  .legend {
+    flex-direction: column;
+    font-size: 13px;
+  }
+
+  .legend-item {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
